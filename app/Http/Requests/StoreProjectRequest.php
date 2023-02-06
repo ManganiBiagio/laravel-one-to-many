@@ -33,7 +33,8 @@ class StoreProjectRequest extends FormRequest
             "name" => "required|max:255",
             "description" => "required|string",
             "cover_img" => "image",
-            "github_link"=>"max:255"
+            "github_link"=>"max:255",
+            "type_id"=>"exists:types,id"
         ];
     }
 }

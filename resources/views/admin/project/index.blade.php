@@ -11,6 +11,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$project["name"]}}</h5>
                     <p class="card-text">{{$project["description"]}}</p>
+                    <div>Tipologia</div>
+                    <ul>
+                        <li>{{$project->type->name}}</li>
+                    </ul>
                     <div class="d-flex gap-3">
                         <a href="{{route("admin.projects.show",$project->id)}}" class="btn btn-primary">Info</a>
                         <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-secondary">

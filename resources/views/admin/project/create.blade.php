@@ -26,6 +26,21 @@
         </div>
       @enderror
       </div>
+      <div class="mb-3">
+        <label class="form-label">Tipoliga</label>
+        <select class="form-select @error('type_id') is-invalid @enderror" name="type_id">
+          <option></option>
+          {{-- Per ogni elemento all'interno di $categories, stampo una option --}}
+          @foreach ($types as $type)
+          <option value={{ $type->id }}>{{ $type->name }}</option>
+          @endforeach
+        </select>
+        @error('type_id')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+        @enderror
+      </div>
       
       <div class="mb-3">
         <label class="form-label">Immagine</label>
