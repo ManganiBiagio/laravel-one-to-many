@@ -11,5 +11,7 @@ class Project extends Model
     protected $fillable=[
         "name","description","cover_img","github_link"
     ];
-
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
 }
