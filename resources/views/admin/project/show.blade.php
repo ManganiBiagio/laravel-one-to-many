@@ -17,6 +17,7 @@
                     </p>
                     <div class="card-text py-3">
                         <ul class="list-group">
+                        <li class="list-group-item">Tipologia:{{$project->type->name}}</li>
                         <li class="list-group-item">GitHub Link:  <a href="{{$project["github_link"]}}">{{$project["github_link"]}}</a></li>
                         <li class="list-group-item">Creato il: {{$project["created_at"]}}</li>
                         <li class="list-group-item">Modificato il: {{$project["updated_at"]}}</li>
