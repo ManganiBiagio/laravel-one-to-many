@@ -34,7 +34,7 @@
           <option></option>
           {{-- Per ogni elemento all'interno di $categories, stampo una option --}}
           @foreach ($types as $type)
-          <option value={{ $type->id }}>{{ $type->name }}</option>
+          <option value={{ $type->id }} {{$project->type_id===$type->id ? "selected":""}}>{{ $type->name }}</option>
           @endforeach
         </select>
         @error('type_id')
