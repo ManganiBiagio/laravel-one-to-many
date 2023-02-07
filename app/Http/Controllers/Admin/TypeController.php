@@ -86,10 +86,34 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
+    
     {
-        $type=Type::findOrFail($id);
-        $type->delete();
+        
+        $id=(int) $request->type;
+        $destroyAnyway=$request->destroyAnyway;
+        
+        
+        $typeToDelete=Type::findOrFail($id);
+        $types=Type::all();
+        if(!$typeToDelete->projects->isEmpty()){
+            
+            if(is_null($destroyAnyway)){
+                return view("admin.type.index",[
+                    "types"=>$types,
+                    "typeToDelete"=>$typeToDelete,
+                    "msgError"=>"Stai cercando di cancellare una categoria associata a dei progetti esistenti"]);
+                    
+            }
+            else{
+                
+                // qui dobbiamo cancellare l'associazione con i progetti nel db
+                // $typeToDelete->delete();
+                 return redirect()->route("admin.types.index");
+            }
+        
+            }
+        $typeToDelete->delete();
         return redirect()->route("admin.types.index");
     }
 }

@@ -40,7 +40,16 @@ Route::middleware(['auth', 'verified'])
         
 
         Route::resource("projects", ProjectController::class);
-        Route::resource("types",TypeController::class);
+       
+        Route::prefix("types")
+        ->name("types.")
+        ->group(function(){
+            Route::get("/",[TypeController::class,"index"])->name("index");
+            Route::get("/create",[TypeController::class,"create"])->name("create");
+            Route::post("/", [TypeController::class, "store"])->name("store");
+            Route::delete("/{type}/{destroyAnyway?}", [TypeController::class, "destroy"])->name("destroy");
+
+        });
        
     });
        
